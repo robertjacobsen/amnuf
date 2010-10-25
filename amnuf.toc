@@ -1,0 +1,7 @@
+## Interface: 40000
+## Title: Amnith's UnitFrame Modifications
+## Notes: Makes your unitframes go
+## Author: Amnith
+## Version: 1.0
+## SavedVariables: amnufdb
+amnuf.lua
