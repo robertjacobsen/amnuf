@@ -1,8 +1,10 @@
 PlayerFrame:ClearAllPoints()
-PlayerFrame:SetPoint("CENTER", nil, "CENTER", -150, -230)
+PlayerFrame:SetPoint("CENTER", nil, "CENTER", -150, -200)
+PlayerFrame:SetScale(1.2)
 
 TargetFrame:ClearAllPoints()
 TargetFrame:SetPoint("LEFT", PlayerFrame, "RIGHT", 50, 0)
+TargetFrame:SetScale(1.2)
 
 PartyMemberFrame1:ClearAllPoints()
 PartyMemberFrame1:SetPoint("LEFT", TargetFrame, "RIGHT", 50, 0)
@@ -24,7 +26,7 @@ addon:SetScript("OnEvent", function (self, event, unit)
 	self[event](unit)
 end)
 
-local razframes = {
+local bars = {
 	["PlayerFrameHealthBar"] = "PlayerFrameHealthText",
 	["PlayerFrameManaBar"] = "PlayerFrameManaText",
 	["TargetFrameHealthBar"] = "TargetFrameHealthText",
@@ -57,7 +59,7 @@ addon.PLAYER_LOGIN = function()
 		amnufdb.fontSize = AMNUF_DEFAULT_FONT_SIZE
 	end
 
-	for parent, child in pairs(razframes) do
+	for parent, child in pairs(bars) do
 		local frame = CreateFrame("Frame", nil, getglobal(parent:sub(1,11)))
 		frame:SetFrameStrata"HIGH"
 		frame:CreateFontString(child)
@@ -91,7 +93,7 @@ local help = function()
 end
 
 local updateFontSizes = function() 
-	for parent, child in pairs(razframes) do
+	for parent, child in pairs(bars) do
 		getglobal(child):SetFont(AMNUF_DEFAULT_FONT_NAME, amnufdb.fontSize)
 	end
 end
