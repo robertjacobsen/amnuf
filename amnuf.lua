@@ -35,7 +35,10 @@ local bars = {
 
 local update = function (unit) 
 	if unit ~= "player" and unit ~= "target" then return end
-	local health = string.format("%d / %d (%d%%)", UnitHealth(unit), UnitHealthMax(unit), math.ceil(100 * UnitHealth(unit) / UnitHealthMax(unit)))
+	local health = ""
+	if not UnitIsDead(unit) then
+		health = string.format("%d / %d (%d%%)", UnitHealth(unit), UnitHealthMax(unit), math.ceil(100 * UnitHealth(unit) / UnitHealthMax(unit)))
+	end
 
 	-- Bah, Lua sucks sometimes.
 	local mpper = 0
